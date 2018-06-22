@@ -1,0 +1,21 @@
+.gradle
+/build/
+/bin/
+/logs/
+/ng-app/node_modules/
+!gradle/wrapper/gradle-wrapper.jar
+.DS_Store
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let word of words; let i = index">
+    {{word.value}}
+  </li>
+</ul>
+<input #wordInput>
+<button class="btn btn-success" (click)="addWord(wordInput.value)">Create</button>
+

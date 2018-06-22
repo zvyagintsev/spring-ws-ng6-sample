@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="n.zvyagintsev" id="200620182000">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="words_id_seq"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="words_id_seq"/>
+    </changeSet>
+
+    <changeSet author="n.zvyagintsev" id="200620182001">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="words"/>
+            </not>
+        </preConditions>
+        <createTable tableName="words">
+            <column name="id" type="SERIAL" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="words_id_seq"></constraints>
+            </column>
+            <column name="word" type="text">
+                <constraints nullable="false"></constraints>
+            </column>
+        </createTable>
+    </changeSet>
+    <!--changeSet author="n.zvyagintsev" id="200620182002">
+        <addUniqueConstraint
+                             columnNames="word"
+                             constraintName="const_name"
+                             deferrable="true"
+                             disabled="true"
+                             initiallyDeferred="true"
+                             schemaName="public"
+                             tableName="words"/>
+    </changeSet-->
+</databaseChangeLog>
